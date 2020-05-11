@@ -1,11 +1,8 @@
-import { Global } from '@emotion/core'
 import React, { Fragment } from 'react'
-
-import { Fixture } from './fixture'
-import { theme } from './theme'
+import { Global } from '@emotion/core'
 import { milligramStyles, container } from 'milligram-js'
-
-import * as fixture from './fixtures'
+import { theme } from './theme'
+import { Demo } from './demo'
 
 const globalStyles = milligramStyles(theme)
 
@@ -17,11 +14,7 @@ export const App = () => {
         <h1>
           <code>milligram-js</code>
         </h1>
-        <div>
-          <Fixture title="Typography" source={fixture.typography} />
-          <Fixture title="Blockquotes" source={fixture.blockquotes} />
-          <Fixture title="Buttons" source={fixture.buttons} />
-        </div>
+        <Demo />
       </div>
     </Fragment>
   )
