@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2018",
+    "lib": ["dom", "esnext"],
+
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+
+    "strict": true
+  },
+  "exclude": ["node_modules", "dist"]
+}

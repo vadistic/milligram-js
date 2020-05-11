@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2018",
+    "lib": ["dom", "esnext"],
+
+    "rootDir": "src",
+    "outDir": "dist",
+
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "strict": true,
+    "jsx": "react",
+    "sourceMap": true
+  },
+
+  "include": ["src"]
+}

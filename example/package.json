@@ -1,0 +1,36 @@
+{
+  "name": "milligram-css-in-js-example",
+  "version": "0.2.0",
+  "private": true,
+  "description": "css-in-js port of milligram",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vadistic/milligram-css-in-js"
+  },
+  "license": "MIT",
+  "author": "Jakub Wadas <vadistic@gmail.com>",
+  "scripts": {
+    "dev": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@types/node": "^13.13.5",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "@vadistic/babel-preset": "^0.3.3",
+    "babel-loader": "^8.1.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "prettier": "^2.0.5",
+    "typescript": "^3.8.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
