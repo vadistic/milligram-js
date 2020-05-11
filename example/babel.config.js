@@ -17,5 +17,6 @@ const options = {
 }
 
 module.exports = {
-  presets: [['@vadistic/babel-preset', options]],
+  presets: [['@vadistic/babel-preset', options], '@emotion/babel-preset-css-prop'],
+  plugins: [['emotion']],
 }
