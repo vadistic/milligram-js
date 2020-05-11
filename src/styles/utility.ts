@@ -1,19 +1,28 @@
 import { css } from '../css'
 
+export const clearfixBase = css`
+  &:after {
+    clear: both;
+    content: ' ';
+    display: table;
+  }
+`
+
 export const utilityStyles = css`
   .clearfix {
-    &:after {
-      clear: both;
-      content: ' '; /* The space content is one way to avoid an Opera bug. */
-      display: table;
-    }
+    ${clearfixBase}
   }
 
-  /* Float either direction */
   .float-left {
     float: left;
   }
+
   .float-right {
     float: right;
   }
 `
+
+export const utility = {
+  styles: utilityStyles,
+  clearfix: clearfixBase,
+}

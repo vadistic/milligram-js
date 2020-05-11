@@ -1,19 +1,19 @@
 import { css } from '../css'
-import { theme } from '../theme'
+import { theme, Theme } from '../theme'
 
-export const linkBase = css`
-  color: ${theme.color.primary};
+export const linkBase = (t: Theme = theme) => css`
+  color: ${t.color.primary};
   text-decoration: none;
 
   &:focus,
   &:hover {
-    color: ${theme.color.secondary};
+    color: ${t.color.secondary};
   }
 `
 
-export const linkStyles = css`
+export const linkStyles = (t: Theme = theme) => css`
   a {
-    ${linkBase}
+    ${linkBase(t)}
   }
 `
 export const link = {

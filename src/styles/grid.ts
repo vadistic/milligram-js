@@ -1,33 +1,33 @@
 import { css } from '../css'
-import { theme } from '../theme'
+import { theme, Theme } from '../theme'
 
-export const containerBase = css`
+export const containerBase = (t: Theme = theme) => css`
   margin: 0 auto;
   max-width: 112rem;
   padding: 0 2rem;
   position: relative;
   width: 100%;
 `
-export const rowBase = css`
+export const rowBase = (t: Theme = theme) => css`
   display: flex;
   flex-direction: column;
   padding: 0;
   width: 100%;
 
-  @media (min-width: ${theme.breakpoints.mobile}) {
+  @media (min-width: ${t.breakpoints.mobile}) {
     flex-direction: row;
     margin-left: -1rem;
     width: calc(100% + 2rem);
   }
 `
-export const columnBase = css`
+export const columnBase = (t: Theme = theme) => css`
   display: block;
   flex: 1 1 auto;
   margin-left: 0;
   max-width: 100%;
   width: 100%;
 
-  @media (min-width: ${theme.breakpoints.mobile}) {
+  @media (min-width: ${t.breakpoints.mobile}) {
     margin-bottom: inherit;
     padding: 0 1rem;
   }
@@ -158,15 +158,15 @@ export const columnVariant = {
   `,
 }
 
-export const containerStyles = css`
+export const containerStyles = (t: Theme = theme) => css`
   .container {
-    ${containerBase}
+    ${containerBase(t)}
   }
 `
 
-export const columnStyles = css`
+export const columnStyles = (t: Theme = theme) => css`
   .column {
-    ${columnBase}
+    ${columnBase(t)}
 
     &.column-offset-10 {
       ${columnVariant.offset10}
@@ -266,9 +266,9 @@ export const columnStyles = css`
   }
 `
 
-export const rowStyles = css`
+export const rowStyles = (t: Theme = theme) => css`
   .row {
-    ${rowBase}
+    ${rowBase(t)}
 
     &.row-no-padding {
       ${rowVariant.noPadding}
@@ -301,6 +301,12 @@ export const rowStyles = css`
   /* FIXME: here could go nested columnStyles to 1:1 with original */
 `
 
+export const gridStyles = (t: Theme = theme) => css`
+  ${containerStyles(t)}
+  ${rowStyles(t)}
+  ${columnStyles(t)}
+`
+
 export const container = {
   base: containerBase,
   styles: containerStyles,
@@ -319,6 +325,7 @@ export const column = {
 }
 
 export const grid = {
+  styles: gridStyles,
   container,
   row,
   column,

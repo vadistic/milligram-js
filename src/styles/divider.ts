@@ -1,14 +1,14 @@
 import { css } from '../css'
-import { theme } from '../theme'
+import type { Theme } from '../theme'
 
-export const dividerBase = css`
+export const dividerBase = (t: Theme) => css`
   border: 0;
-  border-top: 0.1rem solid ${theme.color.tertiary};
+  border-top: 0.1rem solid ${t.color.tertiary};
   margin: 3rem 0;
 `
-export const dividerStyles = css`
+export const dividerStyles = (t: Theme) => css`
   hr {
-    ${dividerBase}
+    ${dividerBase(t)}
   }
 `
 export const divider = {

@@ -1,11 +1,11 @@
 import { css } from '../css'
-import { theme } from '../theme'
+import type { Theme } from '../theme'
 
-export const buttonBase = css`
-  background-color: ${theme.color.primary};
-  border: 0.1rem solid ${theme.color.primary};
+export const buttonBase = (t: Theme) => css`
+  background-color: ${t.color.primary};
+  border: 0.1rem solid ${t.color.primary};
   border-radius: 0.4rem;
-  color: ${theme.color.initial};
+  color: ${t.color.initial};
   cursor: pointer;
   display: inline-block;
   font-size: 1.1rem;
@@ -21,9 +21,9 @@ export const buttonBase = css`
 
   &:focus,
   &:hover {
-    background-color: ${theme.color.secondary};
-    border-color: ${theme.color.secondary};
-    color: ${theme.color.initial};
+    background-color: ${t.color.secondary};
+    border-color: ${t.color.secondary};
+    color: ${t.color.initial};
     outline: 0;
   }
 
@@ -34,67 +34,67 @@ export const buttonBase = css`
 
   &:focus,
   &:hover {
-    background-color: ${theme.color.primary};
-    border-color: ${theme.color.primary};
+    background-color: ${t.color.primary};
+    border-color: ${t.color.primary};
   }
 `
 
 export const buttonVariant = {
-  outline: css`
+  outline: (t: Theme) => css`
     background-color: transparent;
-    color: ${theme.color.primary};
+    color: ${t.color.primary};
 
     &:focus,
     &:hover {
       background-color: transparent;
-      border-color: ${theme.color.secondary};
-      color: ${theme.color.secondary};
+      border-color: ${t.color.secondary};
+      color: ${t.color.secondary};
     }
 
     &[disabled] {
       &:focus,
       &:hover {
         border-color: inherit;
-        color: ${theme.color.primary};
+        color: ${t.color.primary};
       }
     }
   `,
-  clear: css`
+  clear: (t: Theme) => css`
     background-color: transparent;
     border-color: transparent;
-    color: ${theme.color.primary};
+    color: ${t.color.primary};
 
     &:focus,
     &:hover {
       background-color: transparent;
       border-color: transparent;
-      color: ${theme.color.secondary};
+      color: ${t.color.secondary};
     }
 
     &[disabled] {
       &:focus,
       &:hover {
         border-color: inherit;
-        color: ${theme.color.primary};
+        color: ${t.color.primary};
       }
     }
   `,
 }
 
-export const buttonStyles = css`
+export const buttonStyles = (t: Theme) => css`
   .button,
   button,
   input[type='button'],
   input[type='reset'],
   input[type='submit'] {
-    ${buttonBase}
+    ${buttonBase(t)}
 
     &.button-outline {
-      ${buttonVariant.outline}
+      ${buttonVariant.outline(t)}
     }
 
     &.button-clear {
-      ${buttonVariant.clear}
+      ${buttonVariant.clear(t)}
     }
   }
 `

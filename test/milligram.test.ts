@@ -4,7 +4,7 @@ import { JSDOM } from 'jsdom'
 import sass from 'node-sass'
 import path from 'path'
 
-import { globalStyles } from '../src/milligram'
+import { milligramStyles } from '../src/milligram'
 import { fixture, ids, overrides } from './milligram.fixture'
 import { normaliseStyles } from './utils'
 
@@ -43,7 +43,7 @@ describe('milligram', () => {
       donePrev()
     })
 
-    const nextStyles = sass.renderSync({ data: globalStyles }).css.toString()
+    const nextStyles = sass.renderSync({ data: milligramStyles() }).css.toString()
 
     const nextHtml = /* html */ `
       <!DOCTYPE html>

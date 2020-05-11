@@ -1,17 +1,17 @@
 import { css } from '../css'
-import { theme } from '../theme'
+import type { Theme } from '../theme'
 
-export const codeBase = css`
-  background: ${theme.color.tertiary};
+export const codeBase = (t: Theme) => css`
+  background: ${t.color.tertiary};
   border-radius: 0.4rem;
   font-size: 86%;
   margin: 0 0.2rem;
   padding: 0.2rem 0.5rem;
   white-space: nowrap;
 `
-export const preBase = css`
-  background: ${theme.color.tertiary};
-  border-left: 0.3rem solid ${theme.color.primary};
+export const preBase = (t: Theme) => css`
+  background: ${t.color.tertiary};
+  border-left: 0.3rem solid ${t.color.primary};
   overflow-y: hidden;
 
   & > code {
@@ -21,12 +21,13 @@ export const preBase = css`
     white-space: pre;
   }
 `
-export const codeStyles = css`
+
+export const codeStyles = (t: Theme) => css`
   code {
-    ${codeBase}
+    ${codeBase(t)}
   }
   pre {
-    ${preBase}
+    ${preBase(t)}
   }
 `
 

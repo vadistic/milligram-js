@@ -1,4 +1,3 @@
-import { css } from './css'
 import {
   blockquoteStyles,
   baseStyles,
@@ -11,38 +10,41 @@ import {
   codeStyles,
   dividerStyles,
   imageStyles,
-  containerStyles,
-  rowStyles,
-  columnStyles,
   formStyles,
+  gridStyles,
+  tableStyles,
 } from './styles'
+import { theme, Theme } from './theme'
 
-export const globalStyles = css`
-  ${baseStyles}
+export const milligramStyles = (t: Theme = theme) =>
+  [
+    baseStyles,
 
-  ${blockquoteStyles}
+    blockquoteStyles,
 
-  ${buttonStyles}
+    buttonStyles,
 
-  ${codeStyles}
+    codeStyles,
 
-  ${dividerStyles}
+    dividerStyles,
 
-  ${containerStyles}
-  ${rowStyles}
-  ${columnStyles}
+    gridStyles,
 
-  ${formStyles}
+    formStyles,
 
-  ${imageStyles}
+    imageStyles,
 
-  ${linkStyles}
+    linkStyles,
 
-  ${listStyles}
+    listStyles,
 
-  ${spacingStyles}
+    tableStyles,
 
-  ${typographyStyles}
+    spacingStyles,
 
-  ${utilityStyles}
-`
+    typographyStyles,
+
+    utilityStyles,
+  ]
+    .map((styles) => (typeof styles === 'function' ? styles(t) : styles))
+    .join('\n')

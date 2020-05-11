@@ -26,3 +26,7 @@ export const theme = {
   font,
   breakpoints,
 }
+
+type _Theme = typeof theme
+
+export interface Theme extends _Theme {}

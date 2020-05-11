@@ -1,10 +1,10 @@
 import { css } from '../css'
-import { theme } from '../theme'
+import { theme, Theme } from '../theme'
 
-export const inputBase = css`
+export const inputBase = (t: Theme = theme) => css`
   appearance: none;
   background-color: transparent;
-  border: 0.1rem solid ${theme.color.quaternary};
+  border: 0.1rem solid ${t.color.quaternary};
   border-radius: 0.4rem;
   box-shadow: none;
   box-sizing: inherit;
@@ -13,12 +13,12 @@ export const inputBase = css`
   width: 100%;
 
   &:focus {
-    border-color: ${theme.color.primary};
+    border-color: ${t.color.primary};
     outline: 0;
   }
 `
-export const selectBase = css`
-  ${inputBase}
+export const selectBase = (t: Theme = theme) => css`
+  ${inputBase(t)}
 
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="%23d1d1d1" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>')
     center right no-repeat;
@@ -29,7 +29,7 @@ export const selectBase = css`
   }
 `
 
-export const labelBase = css`
+export const labelBase = (t: Theme = theme) => css`
   display: block;
   font-size: 1.6rem;
   font-weight: 700;
@@ -44,7 +44,7 @@ export const labelVariant = {
   `,
 }
 
-export const textareaBase = css`
+export const textareaBase = (t: Theme = theme) => css`
   min-height: 6.5rem;
 `
 
@@ -57,7 +57,7 @@ export const checkboxBase = css`
   display: inline;
 `
 
-export const inputStyles = css`
+export const inputStyles = (t: Theme = theme) => css`
   input[type='email'],
   input[type='number'],
   input[type='password'],
@@ -73,27 +73,27 @@ export const inputStyles = css`
   input[type='datetime-local'],
   input:not([type]),
   textarea {
-    ${inputBase}
+    ${inputBase(t)}
   }
 `
-export const selectStyles = css`
+export const selectStyles = (t: Theme = theme) => css`
   select {
-    ${selectBase}
+    ${selectBase(t)}
   }
 `
 
-export const formStyles = css`
-  ${inputStyles}
+export const formStyles = (t: Theme = theme) => css`
+  ${inputStyles(t)}
 
-  ${selectStyles}
+  ${selectStyles(t)}
 
   textarea {
-    ${textareaBase}
+    ${textareaBase(t)}
   }
 
   label,
   legend {
-    ${labelBase}
+    ${labelBase(t)}
   }
 
   fieldset {

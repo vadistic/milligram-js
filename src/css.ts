@@ -1,4 +1,4 @@
-export const css = (strings: TemplateStringsArray, ...sub: any[]): string => {
+export const css = (strings: TemplateStringsArray, ...sub: string[]): string => {
   const lastIndex = strings.length - 1
 
   if (!lastIndex) return strings[0]

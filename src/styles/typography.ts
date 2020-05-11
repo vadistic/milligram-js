@@ -1,32 +1,32 @@
 import { css } from '../css'
-import { theme } from '../theme'
+import { theme, Theme } from '../theme'
 
-export const bodyBase = css`
-  color: ${theme.color.secondary};
-  font-family: ${theme.font.family};
-  font-size: ${theme.font.size};
-  font-weight: ${theme.font.weigth};
-  letter-spacing: ${theme.font.letterSpacing};
-  line-height: ${theme.font.lineHeight};
+export const bodyBase = (t: Theme = theme) => css`
+  color: ${t.color.secondary};
+  font-family: ${t.font.family};
+  font-size: ${t.font.size};
+  font-weight: ${t.font.weigth};
+  letter-spacing: ${t.font.letterSpacing};
+  line-height: ${t.font.lineHeight};
 `
 
-export const bodyStyles = css`
+export const bodyStyles = (t: Theme = theme) => css`
   body {
-    ${bodyBase}
+    ${bodyBase(t)}
   }
 `
 
-const paragraphBase = css`
+const paragraphBase = (t: Theme = theme) => css`
   margin-top: 0;
 `
 
-export const pargaraphStyles = css`
+export const pargaraphStyles = (t: Theme = theme) => css`
   p {
-    ${paragraphBase}
+    ${paragraphBase(t)}
   }
 `
 
-export const headingBase = css`
+export const headingBase = (t: Theme = theme) => css`
   font-weight: 300;
   letter-spacing: -0.1rem;
   margin-bottom: 2rem;
@@ -34,81 +34,81 @@ export const headingBase = css`
 `
 
 export const headingVariant = {
-  h1: css`
+  h1: (t: Theme = theme) => css`
     font-size: 4.6rem;
     line-height: 1.2;
   `,
-  h2: css`
+  h2: (t: Theme = theme) => css`
     font-size: 3.6rem;
     line-height: 1.25;
   `,
-  h3: css`
+  h3: (t: Theme = theme) => css`
     font-size: 2.8rem;
     line-height: 1.3;
   `,
-  h4: css`
+  h4: (t: Theme = theme) => css`
     font-size: 2.2rem;
     letter-spacing: -0.08rem;
     line-height: 1.35;
   `,
-  h5: css`
+  h5: (t: Theme = theme) => css`
     font-size: 1.8rem;
     letter-spacing: -0.05rem;
     line-height: 1.5;
   `,
-  h6: css`
+  h6: (t: Theme = theme) => css`
     font-size: 1.6rem;
     letter-spacing: 0;
     line-height: 1.4;
   `,
 }
 
-export const headingStyles = css`
+export const headingStyles = (t: Theme = theme) => css`
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    ${headingBase}
+    ${headingBase(t)}
   }
 
   h1 {
-    ${headingVariant.h1}
+    ${headingVariant.h1(t)}
   }
 
   h2 {
-    ${headingVariant.h2}
+    ${headingVariant.h2(t)}
   }
 
   h3 {
-    ${headingVariant.h3}
+    ${headingVariant.h3(t)}
   }
 
   h4 {
-    ${headingVariant.h4}
+    ${headingVariant.h4(t)}
   }
 
   h5 {
-    ${headingVariant.h5}
+    ${headingVariant.h5(t)}
   }
 
   h6 {
-    ${headingVariant.h6}
+    ${headingVariant.h6(t)}
   }
 `
 
-export const typographyStyles = css`
+export const typographyStyles = (t: Theme = theme) => css`
   b,
   strong {
     font-weight: bold;
   }
 
-  ${bodyStyles}
+  ${bodyStyles(t)}
 
-  ${pargaraphStyles}
+  ${pargaraphStyles(t)}
 
-  ${headingStyles}
+  ${headingStyles(t)}
 `
 
 export const typography = {

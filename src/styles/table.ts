@@ -1,11 +1,11 @@
 import { css } from '../css'
-import { theme } from '../theme'
+import { theme, Theme } from '../theme'
 
 // media query from source is kinda weird
 // it's omitted in css dist so I'm also skipping it
 
-export const tableCell = css`
-  border-bottom: 0.1rem solid ${theme.color.quinary};
+export const tableCell = (t: Theme = theme) => css`
+  border-bottom: 0.1rem solid ${t.color.quinary};
   padding: 1.2rem 1.5rem;
   text-align: left;
 
@@ -23,13 +23,13 @@ export const tableBase = css`
   width: 100%;
 `
 
-export const tableStyles = css`
+export const tableStyles = (t: Theme = theme) => css`
   table {
     ${tableBase}
 
     td,
     th {
-      ${tableCell}
+      ${tableCell(t)}
     }
   }
 `

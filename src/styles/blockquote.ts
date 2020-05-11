@@ -1,8 +1,8 @@
 import { css } from '../css'
-import { theme } from '../theme'
+import { theme, Theme } from '../theme'
 
-export const blockquoteBase = css`
-  border-left: 0.3rem solid ${theme.color.quaternary};
+export const blockquoteBase = (t: Theme = theme) => css`
+  border-left: 0.3rem solid ${t.color.quaternary};
   margin-left: 0;
   margin-right: 0;
   padding: 1rem 1.5rem;
@@ -12,9 +12,9 @@ export const blockquoteBase = css`
   }
 `
 
-export const blockquoteStyles = css`
+export const blockquoteStyles = (t: Theme = theme) => css`
   blockquote {
-    ${blockquoteBase}
+    ${blockquoteBase(t)}
   }
 `
 
