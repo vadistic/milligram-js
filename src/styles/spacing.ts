@@ -28,3 +28,7 @@ export const spacingStyles = css`
     margin-bottom: 2.5rem;
   }
 `
+
+export const spacing = {
+  styles: spacingStyles,
+}

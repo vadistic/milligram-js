@@ -3,7 +3,7 @@ const color = {
   primary: '#9b4dca',
   secondary: '#606c76',
   tertiary: '#f4f5f6',
-  quaternary: '#e1e1e1',
+  quaternary: '#d1d1d1',
   quinary: '#e1e1e1',
 }
 
@@ -15,7 +15,14 @@ const font = {
   lineHeight: '1.6',
 }
 
+const breakpoints = {
+  mobile: '40rem',
+  tablet: '80rem',
+  desktop: '120rem',
+}
+
 export const theme = {
   color,
   font,
+  breakpoints,
 }

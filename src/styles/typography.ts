@@ -1,7 +1,7 @@
 import { css } from '../css'
 import { theme } from '../theme'
 
-export const body = css`
+export const bodyBase = css`
   color: ${theme.color.secondary};
   font-family: ${theme.font.family};
   font-size: ${theme.font.size};
@@ -10,8 +10,20 @@ export const body = css`
   line-height: ${theme.font.lineHeight};
 `
 
-const paragraph = css`
+export const bodyStyles = css`
+  body {
+    ${bodyBase}
+  }
+`
+
+const paragraphBase = css`
   margin-top: 0;
+`
+
+export const pargaraphStyles = css`
+  p {
+    ${paragraphBase}
+  }
 `
 
 export const headingBase = css`
@@ -21,7 +33,7 @@ export const headingBase = css`
   margin-top: 0;
 `
 
-export const headingVariants = {
+export const headingVariant = {
   h1: css`
     font-size: 4.6rem;
     line-height: 1.2;
@@ -51,32 +63,7 @@ export const headingVariants = {
   `,
 }
 
-export const headings = {
-  h1: headingBase + headingVariants.h1,
-  h2: headingBase + headingVariants.h2,
-  h3: headingBase + headingVariants.h3,
-  h4: headingBase + headingVariants.h4,
-  h5: headingBase + headingVariants.h5,
-  h6: headingBase + headingVariants.h6,
-}
-
-export const typographyStyles = css`
-  /* TYPOGRAPHY */
-
-  /* Default body styles */
-  body {
-    ${body}
-  }
-
-  b,
-  strong {
-    font-weight: bold;
-  }
-
-  p {
-    ${paragraph}
-  }
-
+export const headingStyles = css`
   h1,
   h2,
   h3,
@@ -87,36 +74,56 @@ export const typographyStyles = css`
   }
 
   h1 {
-    ${headingVariants.h1}
+    ${headingVariant.h1}
   }
 
   h2 {
-    ${headingVariants.h2}
+    ${headingVariant.h2}
   }
 
   h3 {
-    ${headingVariants.h3}
+    ${headingVariant.h3}
   }
 
   h4 {
-    ${headingVariants.h4}
+    ${headingVariant.h4}
   }
 
   h5 {
-    ${headingVariants.h5}
+    ${headingVariant.h5}
   }
 
   h6 {
-    ${headingVariants.h6}
+    ${headingVariant.h6}
   }
+`
+
+export const typographyStyles = css`
+  b,
+  strong {
+    font-weight: bold;
+  }
+
+  ${bodyStyles}
+
+  ${pargaraphStyles}
+
+  ${headingStyles}
 `
 
 export const typography = {
   heading: {
     base: headingBase,
-    ...headings,
+    variant: headingVariant,
+    styles: headingStyles,
   },
-  body,
-  paragraph,
+  body: {
+    base: bodyBase,
+    styles: bodyStyles,
+  },
+  paragraph: {
+    base: paragraphBase,
+    styles: pargaraphStyles,
+  },
   styles: typographyStyles,
 }

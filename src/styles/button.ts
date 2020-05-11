@@ -39,45 +39,47 @@ export const buttonBase = css`
   }
 `
 
-export const buttonOutline = css`
-  background-color: transparent;
-  color: ${theme.color.primary};
-
-  &:focus,
-  &:hover {
+export const buttonVariant = {
+  outline: css`
     background-color: transparent;
-    border-color: ${theme.color.secondary};
-    color: ${theme.color.secondary};
-  }
+    color: ${theme.color.primary};
 
-  &[disabled] {
     &:focus,
     &:hover {
-      border-color: inherit;
-      color: ${theme.color.primary};
+      background-color: transparent;
+      border-color: ${theme.color.secondary};
+      color: ${theme.color.secondary};
     }
-  }
-`
 
-export const buttonClear = css`
-  background-color: transparent;
-  border-color: transparent;
-  color: ${theme.color.primary};
-
-  &:focus,
-  &:hover {
+    &[disabled] {
+      &:focus,
+      &:hover {
+        border-color: inherit;
+        color: ${theme.color.primary};
+      }
+    }
+  `,
+  clear: css`
     background-color: transparent;
     border-color: transparent;
-    color: ${theme.color.secondary};
-  }
+    color: ${theme.color.primary};
 
-  &[disabled] {
     &:focus,
     &:hover {
-      color: ${theme.color.primary};
+      background-color: transparent;
+      border-color: transparent;
+      color: ${theme.color.secondary};
     }
-  }
-`
+
+    &[disabled] {
+      &:focus,
+      &:hover {
+        border-color: inherit;
+        color: ${theme.color.primary};
+      }
+    }
+  `,
+}
 
 export const buttonStyles = css`
   .button,
@@ -88,18 +90,17 @@ export const buttonStyles = css`
     ${buttonBase}
 
     &.button-outline {
-      ${buttonOutline}
+      ${buttonVariant.outline}
     }
 
     &.button-clear {
-      ${buttonClear}
+      ${buttonVariant.clear}
     }
   }
 `
 
 export const button = {
   base: buttonBase,
-  clear: buttonClear,
-  outline: buttonOutline,
+  variant: buttonVariant,
   styles: buttonStyles,
 }

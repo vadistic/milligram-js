@@ -1,26 +1,54 @@
 import { css } from '../css'
 
+export const listBase = css`
+  list-style: none;
+  margin-top: 0;
+  padding-left: 0;
+`
+
+export const listVariant = {
+  ol: css`
+    list-style: decimal inside;
+  `,
+  ul: css`
+    list-style: circle inside;
+  `,
+  nested: css`
+    font-size: 90%;
+    margin: 1.5rem 0 1.5rem 3rem;
+  `,
+}
+
 export const listStyles = css`
   dl,
   ol,
   ul {
-    list-style: none;
-    margin-top: 0;
-    padding-left: 0;
+    ${listBase}
   }
 
-  dl,
-  ol,
-  ul {
-    font-size: 90%;
-    margin: 1.5rem 0 1.5rem 3rem;
+  dl dl,
+  dl ol,
+  dl ul,
+  ol dl,
+  ol ol,
+  ol ul,
+  ul dl,
+  ul ol,
+  ul ul {
+    ${listVariant.nested}
   }
 
   ol {
-    list-style: decimal inside;
+    ${listVariant.ol}
   }
 
   ul {
-    list-style: circle inside;
+    ${listVariant.ul}
   }
 `
+
+export const list = {
+  base: listBase,
+  variant: listVariant,
+  styles: listStyles,
+}

@@ -5,7 +5,7 @@ import sass from 'node-sass'
 import path from 'path'
 
 import { globalStyles } from '../src/milligram'
-import { fixture, ids } from './milligram.fixture'
+import { fixture, ids, overrides } from './milligram.fixture'
 import { normaliseStyles } from './utils'
 
 describe('milligram', () => {
@@ -77,13 +77,21 @@ describe('milligram', () => {
     ])
   })
 
-  const getStyles = (id: keyof typeof ids, blacklist: string[] = []) => {
+  const getStyles = ({
+    id,
+    blacklist = [],
+    mod,
+  }: {
+    id: keyof typeof ids
+    blacklist?: string[]
+    mod?: string | null
+  }) => {
     const prevEl = prevDOM.window.document.getElementById(id)!
-    const prevStyle = prevDOM.window.getComputedStyle(prevEl)
+    const prevStyle = prevDOM.window.getComputedStyle(prevEl, mod)
     const prevStyleValues = normaliseStyles((prevStyle as any)._values, blacklist)
 
     const nextEl = nextDOM.window.document.getElementById(id)!
-    const nextStyle = nextDOM.window.getComputedStyle(nextEl)
+    const nextStyle = nextDOM.window.getComputedStyle(nextEl, mod)
     const nextStyleValues = normaliseStyles((nextStyle as any)._values, blacklist)
 
     return { prev: prevStyleValues, next: nextStyleValues }
@@ -105,29 +113,28 @@ describe('milligram', () => {
     expect(normaliseStyles(fixB)).toMatchObject(normaliseStyles(fixA))
   })
 
-  test('prev', async () => {
-    const buttonEl = prevDOM.window.document.getElementById('button')!
-    const buttonStyle = prevDOM.window.getComputedStyle(buttonEl)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const buttonStyleValues = (buttonStyle as any)._values
-
-    // console.log(buttonStyleValues)
-  })
-
-  test('next', async () => {
-    const buttonEl = nextDOM.window.document.getElementById('button')!
-    const buttonStyle = nextDOM.window.getComputedStyle(buttonEl)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const buttonStyleValues = (buttonStyle as any)._values
-
-    // console.log(buttonStyleValues)
-  })
-
   describe('compare', () => {
-    Object.values(ids).forEach((id) => {
-      test(id, () => {
-        const { prev, next } = getStyles(id as keyof typeof ids)
-        expect(next).toMatchObject(prev)
+    const iteractiveMods = [null, ':hover', ':focus', ':disabled']
+    const nullMods = [null]
+    const interactive = ['button', 'link', 'input', 'select', 'textarea', 'checkbox', 'label'].map(
+      (val) => new RegExp(val, 'i'),
+    )
+
+    const isInteractive = (id: string) => interactive.some((rx) => rx.test(id))
+
+    Object.entries(ids).forEach(([key, id]) => {
+      const mods = isInteractive(id) ? iteractiveMods : nullMods
+
+      mods.forEach((mod) => {
+        test(id + (mod || ''), () => {
+          const { prev, next } = getStyles({
+            id: id as keyof typeof ids,
+            blacklist: overrides[key],
+            mod,
+          })
+
+          expect(next).toMatchObject(prev)
+        })
       })
     })
   })

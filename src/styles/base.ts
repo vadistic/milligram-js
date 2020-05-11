@@ -16,3 +16,7 @@ export const baseStyles = css`
     font-size: 62.5%;
   }
 `
+
+export const base = {
+  styles: baseStyles,
+}
