@@ -1,5 +1,5 @@
 import { css } from '../css'
-import type { Theme } from '../theme'
+import { Theme, themable } from '../theme'
 
 export const codeBase = (t: Theme) => css`
   background: ${t.color.tertiary};
@@ -8,6 +8,8 @@ export const codeBase = (t: Theme) => css`
   margin: 0 0.2rem;
   padding: 0.2rem 0.5rem;
   white-space: nowrap;
+
+  ${themable(t, t.extend.code)}
 `
 export const preBase = (t: Theme) => css`
   background: ${t.color.tertiary};
@@ -20,6 +22,8 @@ export const preBase = (t: Theme) => css`
     padding: 1rem 1.5rem;
     white-space: pre;
   }
+
+  ${themable(t, t.extend.pre)}
 `
 
 export const codeStyles = (t: Theme) => css`

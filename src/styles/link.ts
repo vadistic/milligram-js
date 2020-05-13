@@ -1,5 +1,5 @@
 import { css } from '../css'
-import { theme, Theme } from '../theme'
+import { theme, Theme, themable } from '../theme'
 
 export const linkBase = (t: Theme = theme) => css`
   color: ${t.color.primary};
@@ -9,6 +9,8 @@ export const linkBase = (t: Theme = theme) => css`
   &:hover {
     color: ${t.color.secondary};
   }
+
+  ${themable(t, t.extend.link)}
 `
 
 export const linkStyles = (t: Theme = theme) => css`

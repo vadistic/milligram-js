@@ -4,7 +4,7 @@ import { JSDOM } from 'jsdom'
 import sass from 'node-sass'
 import path from 'path'
 
-import { milligramStyles } from '../src/milligram'
+import { milligramStyles } from '../src'
 import { fixture, ids, overrides } from './milligram.fixture'
 import { normaliseStyles } from './utils'
 
@@ -96,22 +96,6 @@ describe('milligram', () => {
 
     return { prev: prevStyleValues, next: nextStyleValues }
   }
-
-  test('normaliseStyles', () => {
-    const fixA = {
-      'leading-zero': '.01rem',
-      'leading-zero-with-minus': '-.01rem',
-      'leading-zero-multiple': '0 .1rem .2rem 0',
-    }
-
-    const fixB = {
-      'leading-zero': '0.01rem',
-      'leading-zero-with-minus': '-0.01rem',
-      'leading-zero-multiple': '0 0.1rem 0.2rem 0',
-    }
-
-    expect(normaliseStyles(fixB)).toMatchObject(normaliseStyles(fixA))
-  })
 
   describe('compare', () => {
     const iteractiveMods = [null, ':hover', ':focus', ':disabled']

@@ -1,5 +1,5 @@
 import { css } from '../css'
-import { theme, Theme } from '../theme'
+import { theme, Theme, themable } from '../theme'
 
 export const blockquoteBase = (t: Theme = theme) => css`
   border-left: 0.3rem solid ${t.color.quaternary};
@@ -10,6 +10,8 @@ export const blockquoteBase = (t: Theme = theme) => css`
   *:last-child {
     margin-bottom: 0;
   }
+
+  ${themable(t, t.extend.blockquote)}
 `
 
 export const blockquoteStyles = (t: Theme = theme) => css`

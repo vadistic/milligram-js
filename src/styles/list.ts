@@ -1,29 +1,41 @@
 import { css } from '../css'
+import { Theme, theme, themable } from '../theme'
 
-export const listBase = css`
+export const listBase = (t: Theme = theme) => css`
   list-style: none;
   margin-top: 0;
   padding-left: 0;
+
+  ${themable(t, t.extend.list)}
 `
 
 export const listVariant = {
-  ol: css`
+  ol: (t: Theme = theme) => css`
     list-style: decimal inside;
+
+    ${themable(t, t.extend.listVariant.ol)}
   `,
-  ul: css`
+  ul: (t: Theme = theme) => css`
     list-style: circle inside;
+
+    ${themable(t, t.extend.listVariant.ul)}
   `,
-  nested: css`
+  dl: (t: Theme = theme) => css`
+    ${themable(t, t.extend.listVariant.dl)}
+  `,
+  nested: (t: Theme = theme) => css`
     font-size: 90%;
     margin: 1.5rem 0 1.5rem 3rem;
+
+    ${themable(t, t.extend.listVariant.nested)}
   `,
 }
 
-export const listStyles = css`
+export const listStyles = (t: Theme = theme) => css`
   dl,
   ol,
   ul {
-    ${listBase}
+    ${listBase(t)}
   }
 
   dl dl,
@@ -35,15 +47,19 @@ export const listStyles = css`
   ul dl,
   ul ol,
   ul ul {
-    ${listVariant.nested}
+    ${listVariant.nested(t)}
   }
 
   ol {
-    ${listVariant.ol}
+    ${listVariant.ol(t)}
   }
 
   ul {
-    ${listVariant.ul}
+    ${listVariant.ul(t)}
+  }
+
+  dl {
+    ${listVariant.dl(t)}
   }
 `
 

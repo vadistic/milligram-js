@@ -1,20 +1,19 @@
 import { css } from '../css'
+import { Theme, theme, themable } from '../theme'
 
-export const baseStyles = css`
-  /* BASE */
-
+export const baseStyles = (t: Theme = theme) => css`
   *,
   *:after,
   *:before {
     box-sizing: inherit;
   }
 
-  /*  The base font-size is set at 62.5% for having the convenience
-    of sizing rems in a way that is similar to using px: 1.6rem = 16px */
   html {
     box-sizing: border-box;
     font-size: 62.5%;
   }
+
+  ${themable(t, t.extend.global)}
 `
 
 export const base = {

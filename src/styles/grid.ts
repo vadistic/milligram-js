@@ -1,5 +1,5 @@
 import { css } from '../css'
-import { theme, Theme } from '../theme'
+import { theme, Theme, themable } from '../theme'
 
 export const containerBase = (t: Theme = theme) => css`
   margin: 0 auto;
@@ -7,6 +7,8 @@ export const containerBase = (t: Theme = theme) => css`
   padding: 0 2rem;
   position: relative;
   width: 100%;
+
+  ${themable(t, t.extend.container)}
 `
 export const rowBase = (t: Theme = theme) => css`
   display: flex;
@@ -19,6 +21,8 @@ export const rowBase = (t: Theme = theme) => css`
     margin-left: -1rem;
     width: calc(100% + 2rem);
   }
+
+  ${themable(t, t.extend.row)}
 `
 export const columnBase = (t: Theme = theme) => css`
   display: block;
@@ -31,6 +35,8 @@ export const columnBase = (t: Theme = theme) => css`
     margin-bottom: inherit;
     padding: 0 1rem;
   }
+
+  ${themable(t, t.extend.column)}
 `
 
 export const rowVariant = {
@@ -301,11 +307,8 @@ export const rowStyles = (t: Theme = theme) => css`
   /* FIXME: here could go nested columnStyles to 1:1 with original */
 `
 
-export const gridStyles = (t: Theme = theme) => css`
-  ${containerStyles(t)}
-  ${rowStyles(t)}
-  ${columnStyles(t)}
-`
+export const gridStyles = (t: Theme = theme) =>
+  [containerStyles, rowStyles, columnStyles].map((s) => themable(t, s)).join('')
 
 export const container = {
   base: containerBase,

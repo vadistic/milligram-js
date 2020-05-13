@@ -14,7 +14,7 @@ import {
   gridStyles,
   tableStyles,
 } from './styles'
-import { theme, Theme } from './theme'
+import { theme, Theme, themable } from './theme'
 
 export const milligramStyles = (t: Theme = theme) =>
   [
@@ -46,5 +46,5 @@ export const milligramStyles = (t: Theme = theme) =>
 
     utilityStyles,
   ]
-    .map((styles) => (typeof styles === 'function' ? styles(t) : styles))
-    .join('\n')
+    .map((s) => themable(t, s))
+    .join('')

@@ -1,8 +1,15 @@
 import { css } from '../css'
-import { theme, Theme } from '../theme'
+import { theme, Theme, themable } from '../theme'
 
-// media query from source is kinda weird
+// table media query from source is kinda weird
 // it's omitted in css dist so I'm also skipping it
+
+export const tableBase = (t: Theme = theme) => css`
+  border-spacing: 0;
+  width: 100%;
+
+  ${themable(t, t.extend.table)}
+`
 
 export const tableCell = (t: Theme = theme) => css`
   border-bottom: 0.1rem solid ${t.color.quinary};
@@ -16,16 +23,13 @@ export const tableCell = (t: Theme = theme) => css`
   &:last-child {
     padding-right: 0;
   }
-`
 
-export const tableBase = css`
-  border-spacing: 0;
-  width: 100%;
+  ${themable(t, t.extend.tableCell)}
 `
 
 export const tableStyles = (t: Theme = theme) => css`
   table {
-    ${tableBase}
+    ${tableBase(t)}
 
     td,
     th {

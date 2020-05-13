@@ -1,5 +1,5 @@
 import { css } from '../css'
-import type { Theme } from '../theme'
+import { Theme, themable } from '../theme'
 
 export const buttonBase = (t: Theme) => css`
   background-color: ${t.color.primary};
@@ -37,6 +37,8 @@ export const buttonBase = (t: Theme) => css`
     background-color: ${t.color.primary};
     border-color: ${t.color.primary};
   }
+
+  ${themable(t, t.extend.button)}
 `
 
 export const buttonVariant = {
@@ -58,6 +60,8 @@ export const buttonVariant = {
         color: ${t.color.primary};
       }
     }
+
+    ${themable(t, t.extend.buttonVariant.outline)}
   `,
   clear: (t: Theme) => css`
     background-color: transparent;
@@ -78,6 +82,8 @@ export const buttonVariant = {
         color: ${t.color.primary};
       }
     }
+
+    ${themable(t, t.extend.buttonVariant.clear)}
   `,
 }
 
