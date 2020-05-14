@@ -7,7 +7,12 @@ type File = {
 }
 
 export const replaceTags = ({ data, filepath }: File) => {
-  const next = data.replace(/import { css } from '.*';/, '').replace(/css\s*`/g, '/* css */ `')
+  const next = data
+    .replace(/import { css } from .*;/, '')
+    .replace(/const css_1 = require(.*);/, '')
+    // skipping css comment in cjs because it breaks syntax highlighting :)
+    .replace(/css_1.css\s*`/g, '`')
+    .replace(/css\s*`/g, '/* css */ `')
 
   return {
     filepath,

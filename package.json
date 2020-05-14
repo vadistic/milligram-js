@@ -9,13 +9,15 @@
   },
   "license": "MIT",
   "author": "Jakub Wadas <vadistic@gmail.com>",
-  "module": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build:tsc": "tsc -p tsconfig.build.json",
-    "build:tags": "ts-node -P tsconfig.cjs.json scripts/replace-tag.ts dist",
-    "build": "yarn clean && yarn build:tsc && yarn build:tags",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:tags": "ts-node -T -P tsconfig.scripts.json scripts/replace-tag.ts dist",
+    "build": "yarn clean && yarn build:esm && yarn build:cjs && yarn build:tags",
     "clean": "rm -rf dist *.tsbuildinfo",
     "format": "prettier --write src test",
     "lint": "eslint --ext ts,tsx src test",
@@ -38,5 +40,9 @@
     "prettier": "^2.0.5",
     "ts-jest": "^25.5.1",
     "typescript": "^3.8.3"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
   }
 }

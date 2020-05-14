@@ -1,18 +1,15 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "module": "esnext",
+    "target": "es2018",
+
     "rootDir": "src",
-    "outDir": "dist",
+    "outDir": "dist/esm",
 
-    "allowJs": false,
-    "noEmit": false,
-
-    "incremental": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
-
-    "skipLibCheck": true
+    "sourceMap": true
   },
   "include": ["src"],
   "exclude": ["**/test", "**/*.test.ts"]

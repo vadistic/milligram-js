@@ -1,7 +1,16 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs"
+    "module": "commonjs",
+    "target": "es2018",
+
+    "allowJs": true,
+    "rootDir": "src",
+    "outDir": "dist/cjs",
+
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
   },
-  "exclude": ["node_modules", "dist", "example"]
+  "include": ["src"]
 }

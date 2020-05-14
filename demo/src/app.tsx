@@ -25,7 +25,7 @@ export const App = () => {
             <code>milligram-js</code>
           </h1>
           <div>
-            <p>Global styles can be modiefied during runtime</p>
+            <p>Styles can be modified on runtime!</p>
             <label>
               Primary Color <small>(change on blur)</small>
               <input

@@ -4,6 +4,7 @@
     "target": "es2018",
     "lib": ["dom", "esnext"],
 
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
