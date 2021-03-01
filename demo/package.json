@@ -17,7 +17,7 @@
     "@emotion/core": "^10.0.28",
     "dedent": "^0.7.0",
     "milligram-js": "latest",
-    "prismjs": "^1.20.0",
+    "prismjs": "^1.23.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
