@@ -3709,8 +3709,10 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-"milligram-js@file:../dist":
-  version "0.0.0"
+milligram-js@latest:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/milligram-js/-/milligram-js-0.1.0.tgz#e2db1526453c45c7e7b828eb05c23454a8349de5"
+  integrity sha512-blAaLnsHWUoF26M3/sFkAkSUbSkpHjvZdPrOzUaquCOJ4flz544PNfDwkwTxV6dQnH9i+FQmeUNbUN9AL9Ee5g==
 
 mime-db@1.44.0, "mime-db@>= 1.43.0 < 2":
   version "1.44.0"
@@ -5009,9 +5011,9 @@ split-string@^3.0.1, split-string@^3.0.2:
     extend-shallow "^3.0.0"
 
 ssri@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
-  integrity sha512-3Wge10hNcT1Kur4PDFwEieXSCMCJs/7WvSACcrMYrNp+b8kDL1/0wJch5Ni2WrtwEa2IO8OsVfeKIciKCDx/QA==
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.2.tgz#157939134f20464e7301ddba3e90ffa8f7728ac5"
+  integrity sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==
   dependencies:
     figgy-pudding "^3.5.1"
 
